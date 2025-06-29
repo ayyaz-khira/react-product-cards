@@ -9,6 +9,16 @@ const Product = (props) => {
 
   function addOne(){
     setProductQuantity(productQuantity+1);
+    props.onAddQuantity();
+    toast.success("Added to Cart");
+  }
+
+  function removeOne(){
+    if(productQuantity==0){
+      return toast.error("The Product Quantity is already zero!");
+    }
+    setProductQuantity(productQuantity-1);
+    props.onRemoveQuantity();
     toast.success("Added to Cart");
   }
 
@@ -24,8 +34,19 @@ const Product = (props) => {
           <strong>Price:</strong> ${props.price}
         </Card.Text>
 
-        <Button variant="primary" onClick={addOne} >AddToCart</Button>
-        <Button variant="primary" style={{marginLeft:"6px"}} >{productQuantity}</Button>
+        <div className="d-flex justify-content-between align-items-center mt-3">
+          <div>
+            <Button variant="primary" size="sm" onClick={addOne} className="me-2">
+              Add
+            </Button>
+            <Button variant="danger" size="sm" onClick={removeOne}>
+              Remove
+            </Button>
+          </div>
+          <div>
+            <span className="badge bg-secondary p-2">Qty: {productQuantity}</span>
+          </div>
+        </div>
       </Card.Body>
     </Card>
     

@@ -1,12 +1,17 @@
 import Product from './components/Product'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {toast} from "react-toastify";
+
 
 
 
 
 function App() {
+
+  const [totalQuantity,setTotalQuantity] = useState(0);
 
   const products=[ { name:"Laptop", price:"90000", url:"https://m.media-amazon.com/images/I/71jG+e7roXL._SL1500_.jpg" },
     { name:"SmartPhone", price:"50000", url:"https://cdn.thewirecutter.com/wp-content/media/2024/09/iphone-2048px-6959.jpg?auto=webp&quality=75&width=980&dpr=2" },
@@ -15,14 +20,27 @@ function App() {
   ]
 
 
+  function handleAddQuantity(){
+    setTotalQuantity((prev)=>prev+1);
+  }
+
+  function handleRemoveQuantity(){
+    if(totalQuantity==0){
+      return toast.error("The total quantity is already zero!");
+    }
+    setTotalQuantity((prev)=>prev-1);
+  }
+
+
   return (
   <div className="container">
     <ToastContainer position="top-right" autoClose={2000} />
+    <h3>Total Quantity: {totalQuantity}</h3>
     <h1 className="my-4">Product Page</h1>
     <div className="row">
       {products.map((element, index) => (
         <div className="col-md-3 mb-4" key={index}>
-          <Product name={element.name} price={element.price} url={element.url} />
+          <Product onAddQuantity={handleAddQuantity} onRemoveQuantity={handleRemoveQuantity} name={element.name} price={element.price} url={element.url} />
         </div>
       ))}
     </div>
