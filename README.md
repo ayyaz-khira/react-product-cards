@@ -1,6 +1,6 @@
 React Product Cards
 
-A simple React application that displays a list of products using React-Bootstrap cards. Each product includes an image, name, price, and a "Buy Now" button.
+A simple React application that displays a list of products using React-Bootstrap cards. Each product includes an image, name, price, and a Buy Now button.
 
 Features
 
