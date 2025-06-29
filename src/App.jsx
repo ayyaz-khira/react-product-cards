@@ -1,5 +1,8 @@
 import Product from './components/Product'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -14,6 +17,7 @@ function App() {
 
   return (
   <div className="container">
+    <ToastContainer position="top-right" autoClose={2000} />
     <h1 className="my-4">Product Page</h1>
     <div className="row">
       {products.map((element, index) => (
