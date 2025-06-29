@@ -5,7 +5,7 @@ Includes global cart state and toast notifications for user actions.
 
 Features
 
-- Reusable Product components
+- Product components styled using `React-Bootstrap`
 - Add to Cart / Remove from Cart functionality
 - Global cart quantity tracking
 - Toast notifications using `react-toastify`
